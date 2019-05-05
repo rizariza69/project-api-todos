@@ -72,7 +72,7 @@ module.exports = {
   update: (req, res) => {
     Todos.update(
       {
-        id: req.params.id
+        id: req.params._id
       },
       {
         $set: {
@@ -96,7 +96,7 @@ module.exports = {
 
   delete: (req, res) => {
     Todos.deleteOne({
-      id: req.params.id
+      id: req.params._id
     })
       .then(todo => {
         res.status(201).json({
@@ -104,7 +104,7 @@ module.exports = {
           data: todo
         });
       })
-      .cacth(error => {
+      .catch(error => {
         res.status(500).json({
           message: "Delete success"
         });
